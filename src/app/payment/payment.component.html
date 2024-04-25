@@ -1,1 +1,10 @@
-<p>payment works!</p>
+<!-- payment.component.html -->
+<div>
+  <h1>Payment Page</h1>
+
+  <!-- Display CardFormComponent -->
+  <app-cardform [selectedCard]="selectedCard"></app-cardform>
+
+  <!-- Display DetailsComponent -->
+  <app-details (returnCard)="receiveSelectedCard($event)"></app-details>
+</div>

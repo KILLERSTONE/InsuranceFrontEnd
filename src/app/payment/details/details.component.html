@@ -12,12 +12,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let card of cards">
+      <tr *ngFor="let card of cards" [attr.data-card-id]="card.cardId" (click)="onTableRowClick(card)">
         <td>{{ card.cardId }}</td>
         <td>{{ card.cardOwner }}</td>
         <td>{{ card.cardNo }}</td>
         <td>{{ card.securityCode }}</td>
-        <td>{{ card.validThrough | date }}</td>
+        <td>{{ card.validThrough }}</td>
         <td>
           <button (click)="deleteCard(card.cardId)">Delete</button>
         </td>

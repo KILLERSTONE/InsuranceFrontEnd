@@ -1,7 +1,7 @@
-import { Component, Output, output } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { CardInfo } from '../../shared/types';
 import { PaymentService } from '../payment.service';
-import { EventEmitter } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-details',
@@ -10,7 +10,8 @@ import { EventEmitter } from '@angular/core';
 })
 export class DetailsComponent {
   cards: CardInfo[] = [];
-  @Output() returnCard=new EventEmitter<CardInfo>();
+  @Output() returnCard = new EventEmitter<CardInfo>();
+  selectedCard:CardInfo|null=null;
 
   constructor(private paymentService: PaymentService) {}
 
@@ -32,15 +33,25 @@ export class DetailsComponent {
   deleteCard(cardId: number): void {
     this.paymentService.deleteCard(cardId).subscribe(
       () => {
-        this.cards = this.cards.filter((card) => card.cardId !== cardId);
+        console.log('Card deleted successfully');
+        this.loadCards();
       },
       (error) => {
-        console.error('Error deleting card: ', error);
+        if (error instanceof HttpErrorResponse && error.status === 200) {
+          console.log('Card deleted successfully');
+          this.loadCards();
+        } else {
+          console.error('Error deleting card: ', error);
+        }
       }
     );
   }
 
-  onSelectCard(card:CardInfo){
-    this.returnCard.emit(card);
+
+  onTableRowClick(card: CardInfo): void {
+    console.log("Row clicked: ",card);
+    this.selectedCard=card;
+    this.returnCard.emit(this.selectedCard);
   }
+
 }

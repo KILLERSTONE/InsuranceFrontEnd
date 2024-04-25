@@ -7,6 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthModule } from './auth/auth.module';
+import { CommonModule } from '@angular/common';
+import { PaymentModule } from './payment/payment.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { AuthModule } from './auth/auth.module';
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    AuthModule
+    AuthModule,
+    CommonModule,
+    PaymentModule
   ],
   providers: [
     provideClientHydration()

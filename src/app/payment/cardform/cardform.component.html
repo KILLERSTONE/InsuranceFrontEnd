@@ -1,1 +1,40 @@
-<p>cardform works!</p>
+<form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="cardId">Card ID:</label>
+    <input type="text" id="cardId" formControlName="cardId">
+  </div>
+
+  <div>
+    <label for="cardOwner">Card Owner:</label>
+    <input type="text" id="cardOwner" formControlName="cardOwner">
+    <div *ngIf="cardForm.get('cardOwner')?.invalid && cardForm.get('cardOwner')?.touched">
+      Card owner is required.
+    </div>
+  </div>
+
+  <div>
+    <label for="cardNo">Card Number:</label>
+    <input type="text" id="cardNo" formControlName="cardNo">
+    <div *ngIf="cardForm.get('cardNo')?.invalid && cardForm.get('cardNo')?.touched">
+      Card number is required.
+    </div>
+  </div>
+
+  <div>
+    <label for="securityCode">Security Code:</label>
+    <input type="text" id="securityCode" formControlName="securityCode">
+    <div *ngIf="cardForm.get('securityCode')?.invalid && cardForm.get('securityCode')?.touched">
+      Security code is required.
+    </div>
+  </div>
+
+  <div>
+    <label for="validThrough">Valid Through:</label>
+    <input type="date" id="validThrough" formControlName="validThrough">
+    <div *ngIf="cardForm.get('validThrough')?.invalid && cardForm.get('validThrough')?.touched">
+      Valid through date is required.
+    </div>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>
