@@ -11,6 +11,7 @@ import { AuthService } from '../../auth/auth.service';
 export class DashboardComponent implements OnInit {
   policies: Policy[] = [];
 
+
   constructor(
     private policyService: PolicyService,
     private authService: AuthService

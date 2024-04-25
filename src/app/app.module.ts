@@ -9,6 +9,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { AuthModule } from './auth/auth.module';
 import { CommonModule } from '@angular/common';
 import { PaymentModule } from './payment/payment.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PaymentModule } from './payment/payment.module';
     FormsModule,
     AuthModule,
     CommonModule,
-    PaymentModule
+    PaymentModule,
+    SharedModule
   ],
   providers: [
     provideClientHydration()
