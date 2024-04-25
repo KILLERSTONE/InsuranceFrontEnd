@@ -1,0 +1,21 @@
+<div class="flex justify-center items-center h-screen bg-gray-200">
+  <form (ngSubmit)="submit()" [formGroup]="loginForm" class="w-full max-w-sm bg-white rounded-2xl shadow-2xl px-8 pt-6 pb-8">
+    <h1 class="text-center text-2xl font-bold mb-8">Login</h1>
+    <div class="mb-4">
+      <label for="username" class="block text-gray-700 text-sm font-bold mb-2">Username</label>
+      <input type="text" formControlName="username" id="username" placeholder="Enter your username" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+      <div *ngIf="loginForm.get('username')?.invalid && (loginForm.get('username')?.dirty || loginForm.get('username')?.touched)" class="text-red-500 text-xs mt-1">Username is required</div>
+    </div>
+    <div class="mb-4">
+      <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+      <input type="password" formControlName="password" id="password" placeholder="Enter your password" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+      <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)" class="text-red-500 text-xs mt-1">
+        <ng-container *ngIf="loginForm.get('password')?.hasError('required')">Password is required</ng-container>
+        <ng-container *ngIf="loginForm.get('password')?.hasError('minlength')">Password must be at least 8 characters long</ng-container>
+      </div>
+    </div>
+    <div class="text-center">
+      <button type="submit" [disabled]="loginForm.invalid" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Login</button>
+    </div>
+  </form>
+</div>

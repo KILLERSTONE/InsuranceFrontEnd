@@ -1,0 +1,30 @@
+<div *ngIf="cards.length > 0; else noCards">
+  <h2>Card Details</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Card ID</th>
+        <th>Card Owner</th>
+        <th>Card Number</th>
+        <th>Security Code</th>
+        <th>Valid Through</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let card of cards">
+        <td>{{ card.cardId }}</td>
+        <td>{{ card.cardOwner }}</td>
+        <td>{{ card.cardNo }}</td>
+        <td>{{ card.securityCode }}</td>
+        <td>{{ card.validThrough | date }}</td>
+        <td>
+          <button (click)="deleteCard(card.cardId)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #noCards>
+  <p>No cards available.</p>
+</ng-template>
