@@ -1,13 +1,25 @@
 <div class="bg-white shadow-md p-6 rounded-lg">
-  <header class="border-b md:flex md:items-center md:justify-between p-4 pb-0 shadow-lg md:pb-4">
-    <div class="flex justify-between items-center w-full">
-      <div>iLink Logo</div>
-      <div>
-        <div>Employee Name:</div>
-        <div>Employee Id:</div>
+  <div class="bg-white shadow-md p-6 rounded-lg">
+    <div class="bg-blue-100 border-b ">
+      <header class="md:flex md:items-center md:justify-between p-4 pb-0 shadow-lg md:pb-4">
+        <div class="flex justify-between items-center w-full">
+          Welcome to Futurisk Plus
+        </div>
+      </header>
+    </div>
+
+    <div class="bg-grey-50 border-b mt-4">
+      <div class="flex">
+        <div><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCf0eN5BhqnoN5wqSV97Mp246uIL0SCux8-1qMpxiUsg&s" alt="iLink logo"></div>
+        <div class="ml-4">
+          <div>Employee Name:{{empusername}}</div>
+          <div>Employee Id:{{empid}}</div>
+        </div>
       </div>
     </div>
-  </header>
+  </div>
+
+
 
   <div class="md:flex">
     <aside class="md:w-1/4 p-4">
@@ -20,11 +32,9 @@
         <li *ngFor="let policy of policies">
           <div>Policy ID: {{ policy.policyId }}</div>
           <div>Policy Name: {{ policy.policyName }}</div>
-          <div>Policy Detail: {{ policy.policyDetail }}</div>
-          <div>Policy Insurer: {{ policy.policyInsurer }}</div>
-          <div>Policy TPA: {{ policy.policyTpa }}</div>
-          <div>Policy From: {{ policy.policyFrom  }}</div>
-          <div>Policy To: {{ policy.policyTo }}</div>
+          <div>Insurer: {{ policy.policyInsurer }}</div>
+          <div>TPA: {{ policy.policyTpa }}</div>
+          <div>Policy Period:{{ policy.policyFrom  }} to {{ policy.policyTo }}</div>
         </li>
       </ul>
     </main>
@@ -41,10 +51,8 @@
         <h3>Social Media</h3>
         <ul>
           Social media icons
-
         </ul>
       </div>
-
     </aside>
   </div>
 

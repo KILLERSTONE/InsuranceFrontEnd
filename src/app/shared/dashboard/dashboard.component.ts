@@ -11,10 +11,12 @@ import { AuthService } from '../../auth/auth.service';
 export class DashboardComponent implements OnInit {
   policies: Policy[] = [];
 
-
-  constructor(
+  empid!:number;
+  empusername!:string;
+    constructor(
     private policyService: PolicyService,
-    private authService: AuthService
+    private authService: AuthService,
+
   ) {}
 
   ngOnInit() {
@@ -24,6 +26,8 @@ export class DashboardComponent implements OnInit {
       this.policyService.getUserPolicies(uId).subscribe(
         (policies: Policy[]) => {
           this.policies = policies;
+          this.empid=Number(uId);
+          this.empusername=sessionStorage.getItem('username') as string;
           console.log(this.policies);
         },
         (error) => console.error('Error fetching policies: ', error)

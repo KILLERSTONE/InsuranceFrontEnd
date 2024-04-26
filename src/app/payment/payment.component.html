@@ -3,8 +3,8 @@
   <h1>Payment Page</h1>
 
   <!-- Display CardFormComponent -->
-  <app-cardform [selectedCard]="selectedCard"></app-cardform>
+  <app-cardform [selectedCard]="selectedCard" (formSubmitted)="reloadForm()"></app-cardform>
 
   <!-- Display DetailsComponent -->
-  <app-details (returnCard)="receiveSelectedCard($event)"></app-details>
+  <app-details [reloadDetails]="reloadDetails"  (returnCard)="receiveSelectedCard($event)"></app-details>
 </div>

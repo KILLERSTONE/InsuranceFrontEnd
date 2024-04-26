@@ -10,6 +10,8 @@ import { AuthModule } from './auth/auth.module';
 import { CommonModule } from '@angular/common';
 import { PaymentModule } from './payment/payment.module';
 import { SharedModule } from './shared/shared.module';
+import {ToastrModule} from 'ngx-toastr';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { SharedModule } from './shared/shared.module';
     AuthModule,
     CommonModule,
     PaymentModule,
-    SharedModule
+    SharedModule,
+    //ToastrModule.forRoot(),
+
   ],
   providers: [
     provideClientHydration()

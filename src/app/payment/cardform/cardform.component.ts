@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CardInfo } from '../../shared/types';
 import { PaymentService } from '../payment.service';
@@ -10,13 +10,13 @@ import { PaymentService } from '../payment.service';
 })
 export class CardformComponent implements OnInit, OnChanges {
   @Input() selectedCard: CardInfo | null = null;
+  @Output() formSubmitted = new EventEmitter<void>();
   cardForm!: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private paymentService: PaymentService) {}
 
   ngOnInit(): void {
     this.initializeForm();
-    // Preload form data only if a card is selected
     if (this.selectedCard) {
       this.preloadFormData();
     }
@@ -45,7 +45,7 @@ export class CardformComponent implements OnInit, OnChanges {
   private preloadFormData(): void {
     if (this.selectedCard) {
       this.cardForm.patchValue({
-        cardId:[this.selectedCard?.cardId],
+        cardId: [this.selectedCard?.cardId],
         cardOwner: this.selectedCard.cardOwner,
         cardNo: this.selectedCard.cardNo,
         securityCode: this.selectedCard.securityCode,
@@ -57,11 +57,7 @@ export class CardformComponent implements OnInit, OnChanges {
   onSubmit(): void {
     if (this.cardForm.valid) {
       const formData = this.cardForm.value;
-
-      console.log(formData);
       if (formData.cardId) {
-        console.log("edit");
-        // Update existing card
         this.paymentService.updateCard(formData.cardId, formData).subscribe(
           () => {
             console.log('Card updated successfully');
@@ -72,8 +68,6 @@ export class CardformComponent implements OnInit, OnChanges {
           }
         );
       } else {
-        // Create new card
-        console.log("create");
         this.paymentService.addCard(formData).subscribe(
           () => {
             console.log('Card created successfully');
@@ -87,10 +81,11 @@ export class CardformComponent implements OnInit, OnChanges {
     } else {
       console.error('Form is invalid');
     }
+
+    this.formSubmitted.emit();
   }
 
-
-  formatDate(date:Date|null):string{
+  formatDate(date: Date | null): string {
     if (!date) return '';
     const formattedDate = new Date(date).toISOString().split('T')[0];
     return formattedDate;

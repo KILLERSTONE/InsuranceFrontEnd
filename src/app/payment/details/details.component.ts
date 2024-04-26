@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CardInfo } from '../../shared/types';
 import { PaymentService } from '../payment.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -8,12 +8,20 @@ import { HttpErrorResponse } from '@angular/common/http';
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.css']
 })
-export class DetailsComponent {
+export class DetailsComponent implements OnChanges {
   cards: CardInfo[] = [];
+  @Input() reloadDetails: boolean = false;
   @Output() returnCard = new EventEmitter<CardInfo>();
-  selectedCard:CardInfo|null=null;
+  selectedCard: CardInfo | null = null;
 
   constructor(private paymentService: PaymentService) {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['reloadDetails'] && this.reloadDetails) {
+      this.loadCards();
+    }
+
+  }
 
   ngOnInit(): void {
     this.loadCards();
@@ -47,10 +55,9 @@ export class DetailsComponent {
     );
   }
 
-
   onTableRowClick(card: CardInfo): void {
-    console.log("Row clicked: ",card);
-    this.selectedCard=card;
+    console.log("Row clicked: ", card);
+    this.selectedCard = card;
     this.returnCard.emit(this.selectedCard);
   }
 

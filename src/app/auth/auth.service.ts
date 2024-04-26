@@ -15,9 +15,12 @@ export class AuthService {
 
   loginUser(form: LoginForm) {
     const { username, password } = form;
+    sessionStorage.setItem('username',username);
+
     const url = `${this.apiPath}/login`;
     return this.httpClient.post<any>(url, { username, password }).pipe(
       catchError(error => {
+        sessionStorage.removeItem('username');
         return error;
       })
     );
@@ -38,5 +41,9 @@ export class AuthService {
   logout(){
     sessionStorage.removeItem('authenticated');
     sessionStorage.removeItem('userid');
+  }
+
+  getUsername(){
+    return sessionStorage.getItem('username');
   }
 }
