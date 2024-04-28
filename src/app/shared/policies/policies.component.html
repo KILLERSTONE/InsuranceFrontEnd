@@ -1,0 +1,30 @@
+<div *ngIf="policies.length>0; else noPolicies">
+  <table class="min-w-full divide-y divide-gray-200">
+    <thead class="bg-gray-50">
+      <tr>
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Policy ID</th>
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Policy Name</th>
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Policy Detail</th>
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Policy Insurer</th>
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Policy TPA</th>
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Policy From</th>
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Policy To</th>
+      </tr>
+    </thead>
+    <tbody class="bg-white divide-y divide-gray-200">
+      <tr *ngFor="let policy of policies" class="bg-gray-50">
+        <td class="px-6 py-4 whitespace-nowrap">{{ policy.policyId }}</td>
+        <td class="px-6 py-4 whitespace-nowrap">{{ policy.policyName }}</td>
+        <td class="px-6 py-4 whitespace-nowrap">{{ policy.policyDetail }}</td>
+        <td class="px-6 py-4 whitespace-nowrap">{{ policy.policyInsurer }}</td>
+        <td class="px-6 py-4 whitespace-nowrap">{{ policy.policyTpa }}</td>
+        <td class="px-6 py-4 whitespace-nowrap">{{ policy.policyFrom | date: 'dd/MM/yyyy' }}</td>
+        <td class="px-6 py-4 whitespace-nowrap">{{ policy.policyTo | date: 'dd/MM/yyyy' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #noPolicies>
+  <p>No Policies found.</p>
+</ng-template>

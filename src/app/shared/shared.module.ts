@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
+import { PoliciesComponent } from './policies/policies.component';
 
 
 
@@ -11,7 +12,8 @@ import { FooterComponent } from './footer/footer.component';
   declarations: [
     DashboardComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    PoliciesComponent
   ],
   imports: [
     CommonModule,
