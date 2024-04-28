@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { PaymentModule } from './payment/payment.module';
 import { SharedModule } from './shared/shared.module';
 import {ToastrModule} from 'ngx-toastr';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {ToastrModule} from 'ngx-toastr';
 
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })

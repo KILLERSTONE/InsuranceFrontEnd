@@ -1,61 +1,97 @@
-<div class="bg-white shadow-md p-6 rounded-lg">
-  <div class="bg-white shadow-md p-6 rounded-lg">
-    <div class="bg-blue-100 border-b ">
-      <header class="md:flex md:items-center md:justify-between p-4 pb-0 shadow-lg md:pb-4">
-        <div class="flex justify-between items-center w-full">
-          Welcome to Futurisk Plus
-        </div>
-      </header>
-    </div>
+<div class="bg-cover bg-center">
+  <div class="bg-blue-500 dark:bg-blue-700 rounded-lg shadow p-5 mb-6 h-screen/2">
+    <h1 class="text-2xl font-bold text-white mb-4">Welcome To Futurisk Plus</h1>
 
-    <div class="bg-grey-50 border-b mt-4">
-      <div class="flex">
-        <div><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCf0eN5BhqnoN5wqSV97Mp246uIL0SCux8-1qMpxiUsg&s" alt="iLink logo"></div>
-        <div class="ml-4">
-          <div>Employee Name:{{empusername}}</div>
-          <div>Employee Id:{{empid}}</div>
+    <!-- Employee Section -->
+    <div class="flex justify-between items-center mt-4 bg-white dark:bg-zinc-800 rounded-lg shadow p-5">
+      <div class="flex items-center">
+        <img src="https://www.ilink-digital.com/wp-content/uploads/2020/04/iLink-Digital-RGB-800px-e1587616464332.png"
+          alt="Company Logo" class="mr-4">
+        <div>
+          <p class="font-semibold text-red-500">Employee Name: {{ empusername.charAt(0).toUpperCase() +
+            empusername.slice(1).toLowerCase() }}</p>
+          <p class="text-red-500">Employee Information: ID: {{ empid }}, Company Name: iLink Digital</p>
         </div>
       </div>
     </div>
   </div>
 
-
-
-  <div class="md:flex">
-    <aside class="md:w-1/4 p-4">
-      <h2>Group Mediclaim Policy</h2>
-    </aside>
-
-    <main class="md:w-3/4 p-4">
-      <h2>Your Policies</h2>
-      <ul>
-        <li *ngFor="let policy of policies">
-          <div>Policy ID: {{ policy.policyId }}</div>
-          <div>Policy Name: {{ policy.policyName }}</div>
-          <div>Insurer: {{ policy.policyInsurer }}</div>
-          <div>TPA: {{ policy.policyTpa }}</div>
-          <div>Policy Period:{{ policy.policyFrom  }} to {{ policy.policyTo }}</div>
-        </li>
-      </ul>
-    </main>
-    <aside class="md:w-1/4 p-4">
-      <div class="mt-4">
-        <h3>Help Center</h3>
-        <ul>
-          <li><a href="#">How to Claim</a></li>
-          <li><a href="#">Policy Coverage</a></li>
-          <li><a href="#">Contact Support</a></li>
-        </ul>
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+    <!-- Group Mediclaim Policy -->
+    <div class="md:col-span-3 bg-white dark:bg-zinc-800 rounded-lg shadow p-5 flex flex-col justify-between">
+      <div>
+        <h2 class="text-xl font-bold text-black mb-4">Group Mediclaim Policy</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div *ngFor="let policy of policies">
+            <div>
+              <p><strong>Insurer:</strong> {{ policy.policyInsurer }}</p>
+              <p><strong>TPA:</strong> {{ policy.policyTpa }}</p>
+              <p><strong>Policy Period:</strong> {{ (policy.policyFrom |date: 'dd/MM/yyyy') }} to {{ (policy.policyTo|date: 'dd/MM/yyyy') }}</p>
+            </div>
+          </div>
+          <div class="flex justify-end">
+            <button class="bg-blue-100 dark:bg-blue-100 text-white px-4 py-2 rounded-lg text-black">
+              <p class="text-center text-lg font-bold">Enroll Family</p>
+              <p class="text-center">Policy Enrollment Details</p>
+              <img src="https://www.svgrepo.com/show/115078/family-silhouette.svg" width="30px" height="30px">
+            </button>
+          </div>
+        </div>
       </div>
-      <div class="mt-4">
-        <h3>Social Media</h3>
-        <ul>
-          Social media icons
-        </ul>
+
+      <!-- Buttons in a single row -->
+      <div class="flex justify-between mt-10 space-x-4 mb-4">
+        <button
+          class="flex-1 min-w-0 border border-blue-500 dark:border-blue-700 text-blue-500 dark:text-blue-300 border-dotted px-4 py-2 rounded-lg">Family
+          Details</button>
+        <button
+          class="flex-1 min-w-0 border border-blue-500 dark:border-blue-700 text-blue-500 dark:text-blue-300 border-dotted px-4 py-2 rounded-lg">Documents</button>
+        <button
+          class="flex-1 min-w-0 border border-blue-500 dark:border-blue-700 text-black dark:text-blue-300 border-dotted px-4 py-2 rounded-lg">Claims</button>
+        <button
+          class="flex-1 min-w-0 border border-blue-500 dark:border-blue-700 text-black dark:text-blue-300 border-dotted px-4 py-2 rounded-lg">Ecard</button>
+        <button
+          class="flex-1 min-w-0 border border-blue-500 dark:border-blue-700 text-blue-500 dark:text-blue-300 border-dotted px-4 py-2 rounded-lg">Network
+          Hospital</button>
       </div>
-    </aside>
+    </div>
+
+    <!-- Help Center and Social Media -->
+    <div class="md:col-span-1 flex flex-col gap-6">
+      <!-- Help Center -->
+      <div class="bg-white dark:bg-zinc-800 rounded-lg shadow p-5">
+        <h3 class="text-xl font-bold text-black mb-4">Help Center</h3>
+        <div class="border border-blue-500 border-dotted p-4 rounded-md">
+          <div>
+            <p><strong>Kajapathy - Account Manager</strong></p>
+            <p>📞 <a href="tel:7397752283">7397752283</a></p>
+            <p>📧 <a href="mailto:kajapathy@futurisk.in">kajapathy&#64;futurisk.in</a></p>
+          </div>
+        </div>
+
+        <div class="mt-10">
+          <p><strong>Tollfree Helpline</strong></p>
+          <p>📞 <a href="tel:18001034569">1800-1034-569</a></p>
+          <p>📧 <a href="mailto:servicehelpdesk@futurisk.in">servicehelpdesk&#64;futurisk.in</a></p>
+        </div>
+      </div>
+
+      <!-- Social Media -->
+      <div class="bg-white dark:bg-zinc-800 rounded-lg shadow p-5">
+        <h3 class="text-xl font-bold text-black mb-4">Social Media</h3>
+        <div class="flex justify-between items-center space-x-4">
+          <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/1024px-LinkedIn_icon.svg.png" alt="LinkedIn" width="40px" height="40px"></a>
+          <a href="#"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4umdycLjOCULmrNhaQvHXCQtS8wu4H8zVZW_ammaS9Q&s" alt="Facebook" width="40px" height="40px"></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384031.png" alt="Instagram" width="40px" height="40px"></a>
+          <a href="#"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSc_27cCqIddekjeA0gN3wAMqo0bSs3CACBuktMWMsfw&s" alt="X" width="40px" height="40px"></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/256/1384/1384060.png" alt="YouTube" width="40px" height="40px"></a>
+        </div>
+      </div>
+    </div>
+    <div class="border border-dotted border-blue-500 rounded-md bg-blue-100 flex flex-col items-center ml-4">
+      <p class="text-lg font-bold py-2">Pristyncare</p>
+      <p class="py-2">India's surgery expert</p>
+      <img src="https://static.vecteezy.com/system/resources/previews/004/588/667/non_2x/heart-in-hand-line-icon-outline-sign-linear-pictogram-isolated-on-white-health-love-and-relationship-symbol-logo-illustration-charity-and-donation-line-icon-concept-free-vector.jpg" width="50px">
+    </div>
   </div>
-
-  <footer class="text-center mt-4">
-  </footer>
 </div>

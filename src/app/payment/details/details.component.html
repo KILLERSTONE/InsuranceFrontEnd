@@ -1,30 +1,32 @@
-<div *ngIf="cards.length > 0; else noCards">
+<div class="bg-white shadow-lg rounded-lg p-4" *ngIf="cards.length>0; else noCards">
   <h2>Card Details</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Card ID</th>
-        <th>Card Owner</th>
-        <th>Card Number</th>
-        <th>Security Code</th>
-        <th>Valid Through</th>
-        <th>Action</th>
-      </tr>
+  <table class="w-full text-sm text-left text-zinc-500">
+    <thead class="text-xs text-zinc-700 bg-zinc-50">
+        <tr>
+            <th scope="col" class="py-3 px-4">Card Owner</th>
+            <th scope="col" class="py-3 px-4">Card Number</th>
+            <th scope="col" class="py-3 px-4">Exp. Date</th>
+            <th scope="col" class="py-3 px-4"></th>
+        </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let card of cards" [attr.data-card-id]="card.cardId" (click)="onTableRowClick(card)">
-        <td>{{ card.cardId }}</td>
-        <td>{{ card.cardOwner }}</td>
-        <td>{{ card.cardNo }}</td>
-        <td>{{ card.securityCode }}</td>
-        <td>{{ card.validThrough }}</td>
-        <td>
-          <button (click)="deleteCard(card.cardId)">Delete</button>
+      <tr class="bg-white border-b" *ngFor="let card of cards" [attr.data-card-id]="card.cardId" (click)="onTableRowClick(card)">
+        <td class="py-2 px-4">{{ card.cardOwner }}</td>
+        <td class="py-2 px-4">{{ card.cardNo }}</td>
+        <td class="py-2 px-4">{{ card.validThrough | date: 'MM/yyyy' }}</td>
+        <td class="py-2 px-4">
+          <button (click)="deleteCard(card.cardId)">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPO6sm_QoMTGaVe24uQnseDfdJPJ1fOSSJ2YamEwtclA&s" width="20px" height="20px">
+          </button>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
+
+
+
+
 <ng-template #noCards>
   <p>No cards available.</p>
 </ng-template>

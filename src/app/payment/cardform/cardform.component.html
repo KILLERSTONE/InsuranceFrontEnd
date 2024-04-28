@@ -1,40 +1,41 @@
-<form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
-  <div>
-    <label for="cardId">Card ID:</label>
-    <input type="text" id="cardId" formControlName="cardId">
-  </div>
+<form [formGroup]="cardForm" (ngSubmit)="onSubmit()" class="grid md:grid-cols-2 gap-8">
+  <input type="hidden" id="cardId" formControlName="cardId">
 
-  <div>
-    <label for="cardOwner">Card Owner:</label>
-    <input type="text" id="cardOwner" formControlName="cardOwner">
-    <div *ngIf="cardForm.get('cardOwner')?.invalid && cardForm.get('cardOwner')?.touched">
-      Card owner is required.
+  <div class="bg-white shadow-lg rounded-lg p-6">
+    <h2 class="text-xl font-semibold mb-4">Card Information</h2>
+    <div class="mb-4">
+      <label for="cardOwner" class="block text-sm font-medium text-gray-700">Card Owner</label>
+      <input type="text" id="cardOwner" formControlName="cardOwner" placeholder="Card Owner"
+             class="mt-1 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+      <div *ngIf="cardForm.get('cardOwner')?.invalid && cardForm.get('cardOwner')?.touched"
+           class="text-red-500 text-xs mt-1">Card owner is required.</div>
     </div>
-  </div>
-
-  <div>
-    <label for="cardNo">Card Number:</label>
-    <input type="text" id="cardNo" formControlName="cardNo">
-    <div *ngIf="cardForm.get('cardNo')?.invalid && cardForm.get('cardNo')?.touched">
-      Card number is required.
+    <div class="mb-4">
+      <label for="cardNo" class="block text-sm font-medium text-gray-700">Card Number</label>
+      <input type="text" id="cardNo" formControlName="cardNo" placeholder="Card Number"
+             class="mt-1 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+      <div *ngIf="cardForm.get('cardNo')?.invalid && cardForm.get('cardNo')?.touched"
+           class="text-red-500 text-xs mt-1">Card number is required.</div>
     </div>
-  </div>
-
-  <div>
-    <label for="securityCode">Security Code:</label>
-    <input type="text" id="securityCode" formControlName="securityCode">
-    <div *ngIf="cardForm.get('securityCode')?.invalid && cardForm.get('securityCode')?.touched">
-      Security code is required.
+    <div class="grid grid-cols-2 gap-4">
+      <div class="mb-4">
+        <label for="securityCode" class="block text-sm font-medium text-gray-700">Security Code</label>
+        <input type="text" id="securityCode" formControlName="securityCode" placeholder="Security Code"
+               class="mt-1 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        <div *ngIf="cardForm.get('securityCode')?.invalid && cardForm.get('securityCode')?.touched"
+             class="text-red-500 text-xs mt-1">Security code is required.</div>
+      </div>
+      <div class="mb-4">
+        <label for="validThrough" class="block text-sm font-medium text-gray-700">Valid Through</label>
+        <input type="date" id="validThrough" formControlName="validThrough"
+               class="mt-1 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        <div *ngIf="cardForm.get('validThrough')?.invalid && cardForm.get('validThrough')?.touched"
+             class="text-red-500 text-xs mt-1">Valid through date is required.</div>
+      </div>
     </div>
-  </div>
 
-  <div>
-    <label for="validThrough">Valid Through:</label>
-    <input type="date" id="validThrough" formControlName="validThrough">
-    <div *ngIf="cardForm.get('validThrough')?.invalid && cardForm.get('validThrough')?.touched">
-      Valid through date is required.
-    </div>
+    <button type="submit"
+            class="mt-4 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
+            [disabled]="cardForm.invalid">Submit</button>
   </div>
-
-  <button type="submit">Submit</button>
 </form>

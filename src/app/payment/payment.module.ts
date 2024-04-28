@@ -5,7 +5,9 @@ import { DetailsComponent } from './details/details.component';
 import { CardformComponent } from './cardform/cardform.component';
 import { PaymentRoutingModule } from './payment-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -18,7 +20,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     PaymentRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatFormFieldModule,
   ],
   exports:[
     PaymentComponent

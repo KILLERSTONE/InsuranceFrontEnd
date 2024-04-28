@@ -18,7 +18,6 @@ export class DashboardComponent implements OnInit {
     private authService: AuthService,
 
   ) {}
-
   ngOnInit() {
     const uId = this.authService.getUserId();
 
@@ -37,4 +36,9 @@ export class DashboardComponent implements OnInit {
       this.authService.logout();
     }
   }
+
+  getDateOnly(datetimeString:Date): string {
+    return datetimeString.toLocaleDateString();
+  }
+
 }
