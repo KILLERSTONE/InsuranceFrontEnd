@@ -49,11 +49,7 @@ Description of various components and modules created for the project.
 - Usage of LoginAuth guard.
 - Persistence of login using SessionStorage.
 
-## TODO
-List of future enhancements or tasks to be completed.
-
-## Contributors
-List of project contributors.
-
-## License
-Information about the project's license.
+## Further Exploration
+  - Implement an Admin page accessible only to users with admin privileges.
+  - Create an Admin Auth Guard to restrict access to admin users.
+  - Design the Admin page to display login logs, showing all accesses made to the site.
