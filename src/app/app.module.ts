@@ -12,6 +12,7 @@ import { PaymentModule } from './payment/payment.module';
 import { SharedModule } from './shared/shared.module';
 import {ToastrModule} from 'ngx-toastr';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -27,7 +28,12 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     CommonModule,
     PaymentModule,
     SharedModule,
-    //ToastrModule.forRoot(),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }),
 
   ],
   providers: [

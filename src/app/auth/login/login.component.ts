@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../auth.service';
 import { LoginForm } from '../../shared/types';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   loginForm!: FormGroup;
   private subscription: Subscription | undefined;
 
-  constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {}
+  constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder,private toaster:ToastrService) {}
 
   ngOnInit() {
     this.initForm();
@@ -39,11 +40,13 @@ export class LoginComponent implements OnInit, OnDestroy {
       const formValue: LoginForm = this.loginForm.value;
       this.subscription = this.authService.loginUser(formValue).subscribe({
         next: (response) => {
+          this.toaster.success("Logged in successfully");
           console.log('Login successful:', response);
           this.authService.setLoggedIn(response);
           this.router.navigate(['/home']);
         },
         error: (error) => {
+          this.toaster.success("Logged in failed");
           console.error('Login failed:', error);
         }
       });

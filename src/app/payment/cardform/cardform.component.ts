@@ -2,6 +2,7 @@ import { Component, Input, OnInit, OnChanges, SimpleChanges, Output, EventEmitte
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CardInfo } from '../../shared/types';
 import { PaymentService } from '../payment.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cardform',
@@ -13,7 +14,7 @@ export class CardformComponent implements OnInit, OnChanges {
   @Output() formSubmitted = new EventEmitter<void>();
   cardForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private paymentService: PaymentService) {}
+  constructor(private formBuilder: FormBuilder, private paymentService: PaymentService, private toaster: ToastrService) {}
 
   ngOnInit(): void {
     this.initializeForm();
@@ -61,29 +62,47 @@ export class CardformComponent implements OnInit, OnChanges {
         this.paymentService.updateCard(formData.cardId, formData).subscribe(
           () => {
             console.log('Card updated successfully');
+            this.toaster.success('Card updated');
             this.cardForm.reset();
+            this.formSubmitted.emit();
           },
           (error) => {
             console.error('Error updating card: ', error);
+            if (error.status === 200 && error.statusText === 'OK') {
+              this.toaster.success('Card updated successfully');
+              this.cardForm.reset();
+              this.formSubmitted.emit();
+            } else {
+              this.toaster.error("Couldn't update card");
+            }
           }
         );
       } else {
         this.paymentService.addCard(formData).subscribe(
           () => {
             console.log('Card created successfully');
+            this.toaster.success('Card created');
             this.cardForm.reset();
+            this.formSubmitted.emit();
           },
           (error) => {
             console.error('Error creating card: ', error);
+            if (error.status === 200 && error.statusText === 'OK') {
+              this.toaster.success('Card created successfully');
+              this.cardForm.reset();
+              this.formSubmitted.emit();
+            } else {
+              this.toaster.error("Couldn't create card");
+            }
           }
         );
       }
     } else {
       console.error('Form is invalid');
+      this.toaster.error("Invalid card form ");
     }
-
-    this.formSubmitted.emit();
   }
+
 
   formatDate(date: Date | null): string {
     if (!date) return '';

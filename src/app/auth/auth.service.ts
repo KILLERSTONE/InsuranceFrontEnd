@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginForm } from '../shared/types';
 import { catchError, throwError } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { catchError, throwError } from 'rxjs';
 export class AuthService {
 
   private apiPath='https://localhost:7293/api';
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient:HttpClient,private toaster:ToastrService) { }
 
   isAuthenticated:boolean=false;
 
@@ -41,6 +42,8 @@ export class AuthService {
   logout(){
     sessionStorage.removeItem('authenticated');
     sessionStorage.removeItem('userid');
+    this.toaster.success("Logged out");
+
   }
 
   getUsername(){
