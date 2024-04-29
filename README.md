@@ -35,10 +35,11 @@ Description of various components and modules created for the project.
 - Mapping of components in the Payment Module.
 - Handling of invalid routes.
 
-### Authentication
+### Authentication Module
 - Description of the authentication mechanism.
 - Usage of LoginAuth guard.
 - Persistence of login using SessionStorage.
+- Usage of Logout component.
 
 ## Further Exploration
   - Implement an Admin page accessible only to users with admin privileges.
