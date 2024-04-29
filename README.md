@@ -41,6 +41,11 @@ Description of various components and modules created for the project.
 - Persistence of login using SessionStorage.
 - Usage of Logout component.
 
+### Toast Module
+- Implemented Toast Module for proper popup message to be displayed.
+- Implemented this on Login Component to display success and error.
+- Implemented this on Payment Module to display successful POST, PUT operations.
+
 ## Further Exploration
   - Implement an Admin page accessible only to users with admin privileges.
   - Create an Admin Auth Guard to restrict access to admin users.
