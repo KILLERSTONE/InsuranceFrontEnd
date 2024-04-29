@@ -1,27 +1,59 @@
-# InsuranceFe
+# Insurance FE
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.3.
+## Overview
+Brief overview of the project.
 
-## Development server
+## Features
+- List key features of the project.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Installation
+Instructions for installing the project locally.
 
-## Code scaffolding
+## Usage
+Instructions for using the project.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Components and Modules
+Description of various components and modules created for the project.
 
-## Build
+### Login Component
+- Description of the login component.
+- How it interacts with the AuthService.
+- Usage of HttpClient module for API calls.
+- Storage of login information in the database.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Dashboard Component
+- Description of the dashboard component.
+- How it is implemented in the shared module.
+- Display of policies associated with the employee.
+- Links to other pages and buttons based on the design.
 
-## Running unit tests
+### Payment Module
+- Description of the payment module.
+- Components included: CardForm, Details, and Payment.
+- Usage of parent-child communication for controlling components.
+- Implementation of CRUD functionality for cards.
+- Different form validations used.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Navbar and Footer
+- Description of the navbar and footer.
+- Functionality of navbar links.
+- Integration with routing for navigation.
 
-## Running end-to-end tests
+### Routing
+- Description of routing implementation.
+- Mapping of components in the Payment Module.
+- Handling of invalid routes.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Authentication
+- Description of the authentication mechanism.
+- Usage of LoginAuth guard.
+- Persistence of login using SessionStorage.
 
-## Further help
+## TODO
+List of future enhancements or tasks to be completed.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Contributors
+List of project contributors.
+
+## License
+Information about the project's license.
