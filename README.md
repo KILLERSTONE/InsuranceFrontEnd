@@ -1,16 +1,7 @@
 # Insurance FE
 
 ## Overview
-Brief overview of the project.
-
-## Features
-- List key features of the project.
-
-## Installation
-Instructions for installing the project locally.
-
-## Usage
-Instructions for using the project.
+Brief overview of the frontend made for the Insurance Application.
 
 ## Components and Modules
 Description of various components and modules created for the project.
